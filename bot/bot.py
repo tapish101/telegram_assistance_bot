@@ -4,8 +4,8 @@ from telebot.types import Message
 
 time=datetime.datetime.now()
 leave_msg=False
-bot = telebot.TeleBot("5079143508:AAEaBjQVzJtqFVUf1CYghPqWYGhBjVY-ZP0")
-msg_bot = telebot.TeleBot("5033770004:AAGRWt353pZ9uWssCsd2mckNNb-2vmI7NkA")
+bot = telebot.TeleBot("paste public bot token")
+msg_bot = telebot.TeleBot("paste private bot token")
 
 def greeting():
     if time.hour>=14 and time.hour<17:
