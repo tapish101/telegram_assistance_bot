@@ -4,8 +4,9 @@ from telebot.types import Message
 
 time=datetime.datetime.now()
 leave_msg=False
-bot = telebot.TeleBot("paste public bot token")
-msg_bot = telebot.TeleBot("paste private bot token")
+bot = telebot.TeleBot("PUBLIC BOT TOKEN")
+msg_bot = telebot.TeleBot("YOUR PRIVATE BOT TOKEN")
+myChatID=YOUR CHAT ID (10 digit number)
 
 def greeting():
     if time.hour>=14 and time.hour<17:
@@ -42,13 +43,13 @@ def echo_all(message):
     msg=message.text.lower()
     if msg in ['1','call']:
         bot.send_message(message.chat.id,"Tapish Talan is requested to make a call to You.\nPlease have patience.")
-        msg_bot.send_message("1639318508",message.chat.first_name+' '+message.chat.last_name+" wants to call you. User name is \n@"+message.chat.username)
+        msg_bot.send_message(myChatID,message.chat.first_name+' '+message.chat.last_name+" wants to call you. User name is \n@"+message.chat.username)
     if msg in ['2','msg','message','text']:
         bot.send_message(message.chat.id,"OK. Send me the message you want to leave.....")
         leave_msg=True
     if msg in ['3','urrgent','important','imp']:
         bot.send_message(message.chat.id,"Tapish Talan will cantact you ASAP on your telegram account. (Your username @"+message.chat.username+" )")
-        msg_bot.send_message("1639318508",message.chat.first_name+' '+message.chat.last_name+". Username @"+message.chat.username+"\nWants to talk to you, Its Urrgent.")
+        msg_bot.send_message(myChatID,message.chat.first_name+' '+message.chat.last_name+". Username @"+message.chat.username+"\nWants to talk to you, Its Urrgent.")
 
 
 def leave_msgs(message):
@@ -57,9 +58,9 @@ def leave_msgs(message):
 @bot.message_handler(func=leave_msgs)
 def msg(message):
     global leave_msg
-    bot.send_message(message.chat.id,"Your message '"+message.text+"' has been forwarded to Tapish Talan.\n\nHappy to help you.")
+    bot.reply_to(message,"Your message has been forwarded to Tapish Talan.\n\nHappy to help you.")
     leave_msg=False
-    msg_bot.send_message("1639318508",message.text+"\n\nMessage leave by "+message.chat.first_name+' '+message.chat.last_name+". Username @"+message.chat.username)
+    msg_bot.send_message(myChatID,message.text+"\n\nMessage leave by "+message.chat.first_name+' '+message.chat.last_name+". Username @"+message.chat.username)
 
 
 
